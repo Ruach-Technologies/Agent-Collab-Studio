@@ -1,0 +1,9 @@
+# Copy to infra/ngrok/local.yml (git-ignored). Loaded after agent-collab-hub.yml,
+# so this tunnel definition replaces the default one.
+version: "3"
+tunnels:
+  agent-collab-hub:
+    proto: http
+    addr: http://127.0.0.1:8791
+    url: https://your-reserved-domain.ngrok.app
+    inspect: false

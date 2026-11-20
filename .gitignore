@@ -1,0 +1,29 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+web/dist/
+
+# local runtime state
+data/
+workspaces/
+.runtime/
+
+# env
+.env
+.env.*
+!.env.example
+
+# editor/OS
+.DS_Store
+*.log
+*.tsbuildinfo
+.claude/worktrees/
+e2e/.state/
+playwright-report/
+test-results/
+
+# private, never published
+infra/ngrok/local.yml
+docs/regression/

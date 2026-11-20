@@ -1,0 +1,38 @@
+{
+  "name": "agent-collab-hub",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Collab Studio: invite clients and their AI sidekicks into sealed project rooms on this Mac, behind one tunnel",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": [
+    "hub",
+    "web",
+    "e2e"
+  ],
+  "scripts": {
+    "dev:hub": "npm run dev --workspace hub",
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present && npm run test:launcher && node --test infra/scripts/operations.test.mjs",
+    "start": "bash infra/scripts/start-hub.sh",
+    "status": "bash infra/scripts/status.sh",
+    "stop": "bash infra/scripts/stop.sh",
+    "tunnel": "bash infra/scripts/start-tunnel.sh",
+    "smoke": "bash infra/scripts/smoke-e2e.sh",
+    "test:e2e": "playwright test",
+    "launcher:build": "node desktop/package.mjs build",
+    "launcher:install": "node desktop/package.mjs install",
+    "test:launcher": "npm run build --workspace hub && node --test desktop/*.test.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ruach-Technologies/Agent-Collab-Studio.git"
+  }
+}

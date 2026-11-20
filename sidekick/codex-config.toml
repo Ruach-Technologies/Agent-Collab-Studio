@@ -1,0 +1,74 @@
+# System-level Codex CLI config, installed as /etc/codex/config.toml.
+# Layer order (lowest first): packaged defaults, /etc/codex/config.toml,
+# $CODEX_HOME/config.toml, project config, then -c overrides. The hub passes
+# --ignore-user-config so a config.toml on the writable home volume is never
+# read. /etc/codex/requirements.toml pins the security-relevant values below so
+# no layer or -c override can loosen them.
+
+sandbox_mode = "read-only"
+approval_policy = "never"
+web_search = "disabled"
+forced_login_method = "chatgpt"
+# Login lands in $CODEX_HOME/auth.json (home volume), never the OS keyring.
+cli_auth_credentials_store = "file"
+mcp_oauth_credentials_store = "file"
+check_for_update_on_startup = false
+# No AGENTS.md / project docs (the workdir is empty anyway).
+project_doc_max_bytes = 0
+
+[features]
+# Built-in tools that touch the container or the outside world.
+shell_tool = false
+unified_exec = false
+shell_snapshot = false
+view_image = false
+image_generation = false
+browser_use = false
+browser_use_external = false
+in_app_browser = false
+computer_use = false
+# Sub-agents, goals, ChatGPT apps/connectors, plugins, hooks, memories, skills.
+multi_agent_v2 = false
+goals = false
+apps = false
+plugins = false
+remote_plugin = false
+hooks = false
+memories = false
+tool_suggest = false
+skill_search = false
+skill_mcp_dependency_install = false
+sleep_tool = false
+send_message_to_user_async = false
+default_mode_request_user_input = false
+# No shared background daemon: every `codex exec` is self-contained.
+daemon_auto_start = false
+
+[agents]
+enabled = false
+
+[tools.experimental_request_user_input]
+enabled = false
+
+[tools.update_plan]
+enabled = false
+
+[skills]
+include_instructions = false
+
+[skills.bundled]
+enabled = false
+
+[analytics]
+enabled = false
+
+[feedback]
+enabled = false
+
+[otel]
+exporter = "none"
+log_user_prompt = false
+
+[history]
+# ~/.codex/history.jsonl only; session rollouts (needed for resume) are kept.
+persistence = "none"

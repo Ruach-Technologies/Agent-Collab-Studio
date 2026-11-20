@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": ["mcp__hub__*"],
+    "deny": [
+      "Agent", "Task", "TaskStop", "TaskOutput", "TaskCreate", "TaskGet", "TaskList", "TaskUpdate",
+      "Bash", "BashOutput", "KillShell", "PowerShell", "Monitor",
+      "Read", "Write", "Edit", "MultiEdit", "Glob", "Grep", "LS", "LSP",
+      "NotebookEdit", "NotebookRead",
+      "WebFetch", "WebSearch",
+      "Skill", "SlashCommand", "ToolSearch", "TodoWrite", "AskUserQuestion",
+      "EnterPlanMode", "ExitPlanMode", "EnterWorktree", "ExitWorktree",
+      "CronCreate", "CronDelete", "CronList", "ScheduleWakeup",
+      "ListAgents", "SendMessage", "ReportFindings", "Workflow"
+    ],
+    "defaultMode": "dontAsk",
+    "disableBypassPermissionsMode": "disable"
+  },
+  "allowManagedPermissionRulesOnly": true,
+  "disableClaudeAiConnectors": true,
+  "disableAllHooks": true
+}

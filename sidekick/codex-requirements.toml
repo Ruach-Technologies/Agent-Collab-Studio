@@ -1,0 +1,40 @@
+# Enforced Codex CLI constraints, installed as /etc/codex/requirements.toml.
+# Unlike config layers, these cannot be overridden by $CODEX_HOME/config.toml,
+# -c, --enable, -s/-a or --dangerously-bypass-approvals-and-sandbox (observed
+# on 0.170.0: a disallowed sandbox mode is a startup error, a disallowed
+# approval policy or web search mode falls back to the allowed value, and a
+# pinned feature stays off).
+
+allowed_approval_policies = ["never"]
+allowed_sandbox_modes = ["read-only"]
+allowed_web_search_modes = ["disabled"]
+allowed_login_methods = ["chatgpt"]
+allow_managed_hooks_only = true
+allow_browser_and_computer_use = false
+allow_appshots = false
+allow_remote_control = false
+
+[feature_requirements]
+shell_tool = false
+unified_exec = false
+shell_snapshot = false
+view_image = false
+image_generation = false
+browser_use = false
+browser_use_external = false
+in_app_browser = false
+computer_use = false
+multi_agent_v2 = false
+goals = false
+apps = false
+plugins = false
+remote_plugin = false
+hooks = false
+memories = false
+tool_suggest = false
+skill_search = false
+skill_mcp_dependency_install = false
+sleep_tool = false
+send_message_to_user_async = false
+default_mode_request_user_input = false
+daemon_auto_start = false

@@ -1,0 +1,12 @@
+version: "3"
+agent:
+  # Dedicated inspection API port so another ngrok agent on the default 4040
+  # (for example a different project's tunnel) never blocks or confuses the hub.
+  web_addr: 127.0.0.1:4045
+tunnels:
+  agent-collab-hub:
+    proto: http
+    addr: http://127.0.0.1:8791
+    inspect: false
+# For a reserved ngrok domain, copy infra/ngrok/local.example.yml to
+# infra/ngrok/local.yml (git-ignored) and set your domain there.
